@@ -46,7 +46,7 @@ function App() {
 
       {
         tasks.length > 0 && (
-          <ul className='flex flex-col w-[90%] sm:max-w-2xl gap-y-4'>
+          <ul className='flex flex-col w-full sm:max-w-2xl gap-y-4'>
             {
               tasks.map((task, index) => {
                 return(

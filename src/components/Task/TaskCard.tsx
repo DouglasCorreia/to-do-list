@@ -6,14 +6,14 @@ function TaskCard({ task, finishTask, removeTask, editTask, index }: TaskCardPro
         <>
             {
                 <li
-                    className={`flex items-center justify-between p-4 transition-colors duration-200 shadow-2xs rounded-md ${task.completed ? 'bg-green-200' : 'bg-white'}`}
+                    className={`flex items-center max-sm:flex-col max-sm:items-start justify-between p-4 transition-colors duration-200 shadow-2xs rounded-md ${task.completed ? 'bg-green-200' : 'bg-white'}`}
                     key={ index }
                 >
-                    <h2 className='text-gray-800 text-sm font-medium'>
+                    <h2 className='text-gray-800 text-sm font-medium max-sm:mb-4'>
                         { task.title }
                     </h2>
 
-                    <div className='flex items-center gap-4'>
+                    <div className='flex items-center max-sm:justify-end max-sm:w-full gap-4'>
                         <button
                             className='flex items-center justify-center bg-green-400 lg:hover:bg-green-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
                             aria-label='Botão para marcar a tarefa como feita'
