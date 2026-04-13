@@ -19,7 +19,7 @@ function App() {
   } = useTasks();
 
   return (
-    <section id="center" className='flex flex-col items-center justify-center min-h-dvh container m-0 mx-auto gap-4'>
+    <section id="center" className='flex flex-col items-center justify-center min-h-dvh container m-0 mx-auto gap-4 py-8'>
       <div className='p-4 bg-white shadow-2xs rounded-md w-full sm:max-w-2xl'>
         <h1 className='text-2xl text-gray-900 font-bold m-0 text-center mb-5'>Lista de tarefas</h1>
 

@@ -1,46 +1,45 @@
 import type { TaskCardProps } from "../../types/Task";
 import { FaPencilAlt, FaCheckCircle, FaRegTrashAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function TaskCard({ task, finishTask, removeTask, editTask, index }: TaskCardProps) {
     return (
-        <>
-            {
-                <li
-                    className={`flex items-center max-sm:flex-col max-sm:items-start justify-between p-4 transition-colors duration-200 shadow-2xs rounded-md ${task.completed ? 'bg-green-200' : 'bg-white'}`}
-                    key={ index }
+        <motion.li
+            className={`flex items-center max-sm:flex-col max-sm:items-start justify-between p-4 transition-colors duration-200 shadow-2xs rounded-md ${task.completed ? 'bg-green-200' : 'bg-white'}`}
+            initial={{ x: -24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+            <h2 className='text-gray-800 text-sm font-medium max-sm:mb-4'>
+                { task.title }
+            </h2>
+
+            <div className='flex items-center max-sm:justify-end max-sm:w-full gap-4'>
+                <button
+                    className='flex items-center justify-center bg-green-400 lg:hover:bg-green-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
+                    aria-label='Botão para marcar a tarefa como feita'
+                    onClick={() => finishTask(index)}
                 >
-                    <h2 className='text-gray-800 text-sm font-medium max-sm:mb-4'>
-                        { task.title }
-                    </h2>
+                    <FaCheckCircle />
+                </button>
 
-                    <div className='flex items-center max-sm:justify-end max-sm:w-full gap-4'>
-                        <button
-                            className='flex items-center justify-center bg-green-400 lg:hover:bg-green-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
-                            aria-label='Botão para marcar a tarefa como feita'
-                            onClick={() => finishTask(index)}
-                        >
-                            <FaCheckCircle />
-                        </button>
+                <button
+                    className='flex items-center justify-center bg-blue-400 lg:hover:bg-blue-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
+                    aria-label='Botão para editar a tarefa'
+                    onClick={() => editTask(index)}
+                >
+                    <FaPencilAlt />
+                </button>
 
-                        <button
-                            className='flex items-center justify-center bg-blue-400 lg:hover:bg-blue-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
-                            aria-label='Botão para editar a tarefa'
-                            onClick={() => editTask(index)}
-                        >
-                            <FaPencilAlt />
-                        </button>
-
-                        <button
-                            className='flex items-center justify-center bg-red-400 lg:hover:bg-red-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
-                            aria-label='Botão para excluir a tarefa'
-                            onClick={() => removeTask(index)}
-                        >
-                            <FaRegTrashAlt />
-                        </button>
-                    </div>
-                </li>
-            }
-        </>
+                <button
+                    className='flex items-center justify-center bg-red-400 lg:hover:bg-red-500 transition-colors duration-200 size-8 rounded-sm text-white gap-2 cursor-pointer'
+                    aria-label='Botão para excluir a tarefa'
+                    onClick={() => removeTask(index)}
+                >
+                    <FaRegTrashAlt />
+                </button>
+            </div>
+        </motion.li>
     )
 }
 
